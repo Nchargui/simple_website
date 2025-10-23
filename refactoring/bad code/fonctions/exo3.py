@@ -5,7 +5,7 @@
 # 4. Mélange de niveaux d'abstraction
 
 
-def proc(order):
+def proccess_order(order):
     # Validation
     if not order:
         print("ERROR: No order")
@@ -36,7 +36,11 @@ def proc(order):
         'total': round(total, 2),
         'item_count': len(order['items'])
     }
-    
+
+    return result
+
+def save_orders(result):
+
     # Logger
     print(f"Order processed: {result['total']}")
     
@@ -47,10 +51,9 @@ def proc(order):
     # Email
     print(f"Email sent to: {order.get('email', 'unknown')}")
     
-    return result
 
 
-def handle(user):
+def handle_user(user):
     # Validation nom
     if not user.get('name') or len(user['name']) < 2:
         print("Name too short")
